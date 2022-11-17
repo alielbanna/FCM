@@ -1,0 +1,42 @@
+Steps:
+1. make sure to save device token in database related to user (when register a new user).
+2. make sure to update device token every time user logging in app.
+3. implement code ...
+
+fcm api documnetation link : https://firebase.flutter.dev/docs/messaging/notifications#via-rest
+
+method type : POST
+
+base url : https://fcm.googleapis.com
+end point : /fcm/send
+
+headers : {
+    "Authorization" : "key=YOUR_SERVER_KEY",
+    "Content-Type" : "application/json"
+}
+
+body : {
+    "to" : "/topics/TOPIC_NAME",
+    or ----------
+    "to": "TARGETED_DEVICE_TOKEN"
+    "notification": {
+        "title": "you have recieved a message from abdullah mansour",
+        "body": "testing body from post man",
+        "sound": "default"
+    },
+    "android": {
+        "priority": "HIGH",
+        "notification": {
+            "notification_priority": "PRIORITY_MAX",
+            "sound": "default",
+            "default_sound": true,
+            "default_vibrate_timings": true,
+            "default_light_settings": true
+        }
+    },
+    "data": {
+        "type": "order",
+        "id": "87",
+        "click_action": "FLUTTER_NOTIFICATION_CLICK"
+    }
+}
